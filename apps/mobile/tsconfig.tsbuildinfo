@@ -1,0 +1,1 @@
+{"root":["./src/main.tsx","./src/screens/mobilealphabetscreen.tsx","./src/screens/mobilegrammarscreen.tsx","./src/screens/mobilelisteningscreen.tsx","./src/ui/components/mobilealphabetgrid.tsx","./src/ui/components/mobilealphabetquizcard.tsx","./src/ui/components/mobilelisteningcard.tsx","./src/ui/layout/mobileapp.tsx","./vite.config.ts"],"version":"5.9.3"}

@@ -1,0 +1,31 @@
+{
+  "name": "@learnjp/mobile",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "build:app": "npm run build",
+    "cap:sync": "cap sync android",
+    "android:open": "cap open android",
+    "android:run": "cap run android",
+    "android:run:emu": "cap run android --target emulator-5554"
+  },
+  "dependencies": {
+    "@learnjp/core": "1.0.0",
+    "antd-mobile": "^5.38.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.1.0",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.3",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

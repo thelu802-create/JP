@@ -1,0 +1,73 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Sans:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap");
+
+:root {
+  font-family: "Roboto", "Noto Sans", "Noto Sans JP", "Segoe UI", "Arial", sans-serif;
+  background: linear-gradient(180deg, #eaf5ff 0%, #d9ecff 100%);
+  --adm-color-primary: #0b78d1;
+  --adm-color-text: #0f2d46;
+  --adm-color-text-secondary: #456a8a;
+  --adm-border-color: #cfe1f3;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #eaf5ff 0%, #d9ecff 100%);
+}
+
+.mobile-shell {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #eef7ff 0%, #deefff 100%);
+}
+
+.mobile-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: calc(env(safe-area-inset-top, 0px) + 30px) 14px 12px;
+  background: linear-gradient(135deg, #0a6fbe 0%, #1690e8 100%);
+  color: #fff;
+  box-shadow: 0 6px 18px rgba(10, 91, 160, 0.25);
+}
+
+.mobile-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.mobile-header-subtitle {
+  margin-top: 2px;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.mobile-content {
+  padding: 12px;
+  padding-bottom: 92px;
+}
+
+.mobile-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #cfe1f3;
+  box-shadow: 0 -6px 18px rgba(28, 81, 130, 0.12);
+}
+
+.mobile-footer .adm-tab-bar {
+  height: 70px;
+  --active-title-color: var(--adm-color-primary);
+  --active-icon-color: var(--adm-color-primary);
+}
+
+.mobile-footer .adm-tab-bar-item-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.kana {
+  font-size: 26px;
+  font-weight: 700;
+}
