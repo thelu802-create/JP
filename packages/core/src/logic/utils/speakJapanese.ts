@@ -13,11 +13,30 @@ function playFallbackAudio(text: string): void {
   void fallbackAudio.play();
 }
 
+async function speakWithCapacitorTTS(text: string, rate = 0.9): Promise<void> {
+  try {
+    // Dynamically import the TTS plugin
+    const { TextToSpeech } = await import("@capacitor-community/text-to-speech");
+
+    await TextToSpeech.speak({
+      text: text,
+      lang: "ja-JP",
+      rate: rate,
+      pitch: 1.0,
+      volume: 1.0,
+      category: "ambient"
+    });
+  } catch (error) {
+    console.error("TTS Error:", error);
+    playFallbackAudio(text);
+  }
+}
+
 export function speakJapanese(text: string, rate = 0.9): void {
   if (typeof window === "undefined") return;
 
   if (isCapacitorMobile()) {
-    playFallbackAudio(text);
+    void speakWithCapacitorTTS(text, rate);
     return;
   }
 

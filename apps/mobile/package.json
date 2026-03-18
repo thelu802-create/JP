@@ -15,6 +15,9 @@
     "android:run:emu": "cap run android --target emulator-5554"
   },
   "dependencies": {
+    "@capacitor-community/text-to-speech": "^8.0.0",
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/core": "^8.1.0",
     "@learnjp/core": "1.0.0",
     "antd-mobile": "^5.38.1",
     "react": "^18.3.1",
