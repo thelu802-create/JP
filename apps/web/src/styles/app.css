@@ -126,6 +126,12 @@ body {
 
   .responsive-tabs .ant-tabs-nav-wrap {
     overflow-x: auto !important;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .responsive-tabs .ant-tabs-nav-wrap::-webkit-scrollbar {
+    display: none;
   }
 
   .responsive-tabs .ant-tabs-nav-list {
