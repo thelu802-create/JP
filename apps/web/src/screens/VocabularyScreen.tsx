@@ -1,4 +1,4 @@
-﻿import { Button, Card, Segmented, Select, Space, Tag, Typography } from "antd";
+import { Button, Card, Segmented, Select, Space, Tag, Typography } from "antd";
 import { useMemo, useState } from "react";
 import { useVocabularyCards, type TimeVocabularyTab, vocabularyService } from "@learnjp/core";
 import { VocabularyFlashCard } from "../ui/components/VocabularyFlashCard";
@@ -16,20 +16,25 @@ export function VocabularyScreen() {
 
   return (
     <Space direction="vertical" size={12} style={{ width: "100%" }}>
-      <Typography.Title level={4}>Từ vựng Minna no Nihongo Sơ cấp 1</Typography.Title>
+      <Typography.Title level={4} className="section-title">
+        Từ vựng Minna no Nihongo Sơ cấp 1
+      </Typography.Title>
 
-      <Segmented
-        options={[
-          { label: "Theo bài", value: "lesson" },
-          { label: "Ngày/Tháng/Năm/Giờ/Phút/Giây", value: "time" }
-        ]}
-        value={mode}
-        onChange={(value) => setMode(value as "lesson" | "time")}
-      />
+      <div className="segmented-scroll">
+        <Segmented
+          options={[
+            { label: "Theo bài", value: "lesson" },
+            { label: "Ngày/Tháng/Năm/Giờ/Phút/Giây", value: "time" }
+          ]}
+          value={mode}
+          onChange={(value) => setMode(value as "lesson" | "time")}
+        />
+      </div>
 
       {mode === "lesson" ? (
         <>
           <Select
+            className="full-width-control"
             value={lesson}
             onChange={setLesson}
             style={{ width: 240 }}
@@ -52,13 +57,15 @@ export function VocabularyScreen() {
         </>
       ) : (
         <Space direction="vertical" style={{ width: "100%" }}>
-          <Segmented
-            options={timeGroups.map((group) => ({ label: group.label, value: group.key }))}
-            value={timeTab}
-            onChange={(value) => setTimeTab(value as TimeVocabularyTab)}
-          />
+          <div className="segmented-scroll">
+            <Segmented
+              options={timeGroups.map((group) => ({ label: group.label, value: group.key }))}
+              value={timeTab}
+              onChange={(value) => setTimeTab(value as TimeVocabularyTab)}
+            />
+          </div>
           <Typography.Text type="secondary">Tổng từ: {timeCards.length}</Typography.Text>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 12 }}>
+          <div className="responsive-card-grid">
             {timeCards.map((item) => (
               <Card key={item.id} title={item.japanese}>
                 <Space direction="vertical" size={10} style={{ width: "100%" }}>

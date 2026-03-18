@@ -1,4 +1,4 @@
-﻿import { Collapse, Pagination, Select, Segmented, Space, Typography } from "antd";
+import { Collapse, Pagination, Select, Segmented, Space, Typography } from "antd";
 import { useEffect, useMemo, useState } from "react";
 import { grammarService, type GrammarCategory, type GrammarLevel } from "@learnjp/core";
 import { GrammarCard } from "../ui/components/GrammarCard";
@@ -59,14 +59,21 @@ export function GrammarScreen() {
 
   return (
     <Space direction="vertical" size={12} style={{ width: "100%" }}>
-      <Typography.Title level={4}>Ngữ pháp từ N5 đến N1</Typography.Title>
-      <Segmented
-        options={[{ label: "Tất cả", value: "all" }, ...grammarService.levels().map((lv) => ({ label: lv, value: lv }))]}
-        value={level}
-        onChange={(value) => setLevel(value as GrammarLevel | "all")}
-      />
-      <Space wrap>
+      <Typography.Title level={4} className="section-title">
+        Ngữ pháp từ N5 đến N1
+      </Typography.Title>
+
+      <div className="segmented-scroll">
+        <Segmented
+          options={[{ label: "Tất cả", value: "all" }, ...grammarService.levels().map((lv) => ({ label: lv, value: lv }))]}
+          value={level}
+          onChange={(value) => setLevel(value as GrammarLevel | "all")}
+        />
+      </div>
+
+      <Space wrap className="filter-row">
         <Select
+          className="full-width-control"
           style={{ width: 260 }}
           value={category}
           onChange={(value) => setCategory(value as GrammarCategory | "all")}
@@ -75,16 +82,19 @@ export function GrammarScreen() {
             ...grammarService.categories().map((item) => ({ label: categoryLabels[item], value: item }))
           ]}
         />
-        <Segmented
-          options={[
-            { label: "Theo nhóm", value: "grouped" },
-            { label: "Theo trang", value: "paged" }
-          ]}
-          value={viewMode}
-          onChange={(value) => setViewMode(value as "grouped" | "paged")}
-        />
+        <div className="segmented-scroll inline-segmented-scroll">
+          <Segmented
+            options={[
+              { label: "Theo nhóm", value: "grouped" },
+              { label: "Theo trang", value: "paged" }
+            ]}
+            value={viewMode}
+            onChange={(value) => setViewMode(value as "grouped" | "paged")}
+          />
+        </div>
         {viewMode === "paged" ? (
           <Select
+            className="full-width-control"
             style={{ width: 150 }}
             value={pageSize}
             onChange={setPageSize}
@@ -106,6 +116,7 @@ export function GrammarScreen() {
             <GrammarCard key={point.id} point={point} categoryLabel={categoryLabels[point.category]} />
           ))}
           <Pagination
+            className="responsive-pagination"
             current={page}
             pageSize={pageSize}
             total={points.length}

@@ -32,21 +32,31 @@ export function AlphabetScreen() {
 
   return (
     <Space direction="vertical" size={16} style={{ width: "100%" }}>
-      <Typography.Title level={4}>Bảng chữ cái</Typography.Title>
-      <Segmented
-        options={[
-          { label: "Hiragana", value: "hiragana" },
-          { label: "Katakana", value: "katakana" }
-        ]}
-        value={group}
-        onChange={(value) => setGroup(value as AlphabetGroup)}
-      />
-      <Segmented
-        options={sectionOptions}
-        value={section}
-        onChange={(value) => setSection(value as KanaSection | "compound")}
-      />
+      <Typography.Title level={4} className="section-title">
+        Bảng chữ cái
+      </Typography.Title>
+
+      <div className="segmented-scroll">
+        <Segmented
+          options={[
+            { label: "Hiragana", value: "hiragana" },
+            { label: "Katakana", value: "katakana" }
+          ]}
+          value={group}
+          onChange={(value) => setGroup(value as AlphabetGroup)}
+        />
+      </div>
+
+      <div className="segmented-scroll">
+        <Segmented
+          options={sectionOptions}
+          value={section}
+          onChange={(value) => setSection(value as KanaSection | "compound")}
+        />
+      </div>
+
       <AlphabetGrid items={items} onSpeak={alphabetService.speak} />
+
       <AlphabetRowQuizCard
         rows={alphabetService.quizRows()}
         row={quizRow}

@@ -30,9 +30,10 @@ export function AlphabetRowQuizCard({
   onReset
 }: Props) {
   return (
-    <Card title="Quiz theo hàng">
+    <Card title="Quiz theo hàng" className="quiz-card">
       <Space direction="vertical" style={{ width: "100%" }}>
         <Select
+          className="full-width-control"
           value={row}
           onChange={onRowChange}
           options={rows.map((value) => ({ label: `${value}-row`, value }))}
@@ -42,13 +43,16 @@ export function AlphabetRowQuizCard({
           <Typography.Text type="secondary">Hàng này chưa có dữ liệu.</Typography.Text>
         ) : (
           <>
-            <Typography.Text>Chọn kana cho romaji: <b>{promptRomaji}</b></Typography.Text>
+            <Typography.Text>
+              Chọn kana cho romaji: <b>{promptRomaji}</b>
+            </Typography.Text>
             <Radio.Group
+              className="quiz-options"
               value={selected}
               onChange={(event) => onSelect(event.target.value)}
               options={options.map((option) => ({ label: option, value: option }))}
             />
-            <Space>
+            <Space wrap className="action-row">
               <Button onClick={onCheck} disabled={!selected}>
                 Kiểm tra
               </Button>

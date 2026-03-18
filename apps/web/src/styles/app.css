@@ -7,6 +7,7 @@
 
 body {
   margin: 0;
+  background: linear-gradient(120deg, #f8fbff 0%, #ecf4ff 100%);
 }
 
 .web-shell {
@@ -19,6 +20,54 @@ body {
   margin: 0 auto;
 }
 
+.web-title {
+  margin: 0 0 20px !important;
+  font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+  line-height: 1.05 !important;
+  text-wrap: balance;
+}
+
+.web-card {
+  overflow: hidden;
+}
+
+.web-card .ant-card-body {
+  padding: 24px;
+}
+
+.section-title {
+  margin: 0 !important;
+}
+
+.responsive-tabs .ant-tabs-nav {
+  margin-bottom: 20px;
+}
+
+.responsive-tabs .ant-tabs-tab {
+  font-size: 1rem;
+}
+
+.segmented-scroll {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.segmented-scroll .ant-segmented {
+  width: max-content;
+  max-width: none;
+}
+
+.inline-segmented-scroll {
+  width: auto;
+}
+
+.responsive-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+}
+
 .kana {
   font-size: 30px;
   font-weight: 700;
@@ -27,4 +76,113 @@ body {
 .jp-text {
   font-size: 20px;
   font-weight: 700;
+}
+
+.kana-card .ant-card-body {
+  padding: 18px;
+}
+
+.kana-card-content {
+  width: 100%;
+  align-items: flex-start;
+}
+
+.flashcard-layout {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.flashcard-panel {
+  width: 48%;
+}
+
+.action-row {
+  width: 100%;
+}
+
+.quiz-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-row {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .web-shell {
+    padding: 12px;
+  }
+
+  .web-card .ant-card-body {
+    padding: 16px;
+  }
+
+  .web-title {
+    font-size: clamp(2rem, 14vw, 3.75rem) !important;
+  }
+
+  .responsive-tabs .ant-tabs-nav-wrap {
+    overflow-x: auto !important;
+  }
+
+  .responsive-tabs .ant-tabs-nav-list {
+    flex-wrap: nowrap;
+    min-width: max-content;
+  }
+
+  .responsive-tabs .ant-tabs-tab {
+    padding-inline: 10px;
+  }
+
+  .section-title {
+    font-size: 1.9rem !important;
+  }
+
+  .kana {
+    font-size: 2.75rem;
+    line-height: 1;
+  }
+
+  .jp-text {
+    font-size: 1.5rem;
+  }
+
+  .flashcard-layout {
+    flex-direction: column;
+  }
+
+  .flashcard-panel {
+    width: 100%;
+  }
+
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .responsive-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .full-width-control,
+  .full-width-control.ant-select {
+    width: 100% !important;
+  }
+
+  .action-row .ant-space-item,
+  .action-row .ant-btn {
+    width: 100%;
+  }
+
+  .responsive-pagination {
+    overflow-x: auto;
+  }
 }

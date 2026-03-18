@@ -1,4 +1,4 @@
-﻿import { App, Segmented, Space, Typography } from "antd";
+import { App, Segmented, Space, Typography } from "antd";
 import { useMemo, useState } from "react";
 import { listeningService, type ListeningTopic, useListeningTrainer } from "@learnjp/core";
 import { ListeningQuizCard } from "../ui/components/ListeningQuizCard";
@@ -25,15 +25,19 @@ export function ListeningScreen() {
 
   return (
     <Space direction="vertical" size={12} style={{ width: "100%" }}>
-      <Typography.Title level={4}>Luyện nghe</Typography.Title>
-      <Segmented
-        options={[
-          { label: "Tất cả", value: "all" },
-          ...listeningService.topics().map((item) => ({ label: item.label, value: item.key }))
-        ]}
-        value={topic}
-        onChange={(value) => setTopic(value as ListeningTopic | "all")}
-      />
+      <Typography.Title level={4} className="section-title">
+        Luyện nghe
+      </Typography.Title>
+      <div className="segmented-scroll">
+        <Segmented
+          options={[
+            { label: "Tất cả", value: "all" },
+            ...listeningService.topics().map((item) => ({ label: item.label, value: item.key }))
+          ]}
+          value={topic}
+          onChange={(value) => setTopic(value as ListeningTopic | "all")}
+        />
+      </div>
       <ListeningQuizCard
         japanese={trainer.current.japanese}
         hint={trainer.current.hint}

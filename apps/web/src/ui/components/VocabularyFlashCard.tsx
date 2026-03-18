@@ -1,4 +1,4 @@
-﻿import { Button, Card, Space, Tag, Typography } from "antd";
+import { Button, Card, Space, Tag, Typography } from "antd";
 import type { VocabularyItem } from "@learnjp/core";
 
 interface Props {
@@ -35,7 +35,7 @@ export function VocabularyFlashCard({
   const shouldShowMeaning = alwaysShowMeaning || showMeaning;
 
   const meaningBlock = (
-    <Space direction="vertical" size={6} style={{ width: "48%" }}>
+    <Space direction="vertical" size={6} className="flashcard-panel">
       <Typography.Text strong>Nghĩa: {item.meaningVi}</Typography.Text>
       <Typography.Paragraph style={{ marginBottom: 0 }}>
         {item.example.jp}
@@ -46,7 +46,7 @@ export function VocabularyFlashCard({
   );
 
   const jpBlock = (
-    <Space direction="vertical" size={6} style={{ width: "48%" }}>
+    <Space direction="vertical" size={6} className="flashcard-panel">
       <Typography.Title level={3} style={{ margin: 0 }}>
         {item.japanese}
       </Typography.Title>
@@ -55,19 +55,19 @@ export function VocabularyFlashCard({
   );
 
   return (
-    <Card title={`Card ${index + 1}/${total}`}>
+    <Card title={`Card ${index + 1}/${total}`} className="flashcard">
       <Space direction="vertical" size={10} style={{ width: "100%" }}>
-        <Space>
+        <Space wrap>
           {showLessonTag ? <Tag color="geekblue">Bài {item.lesson}</Tag> : null}
           <Tag>{item.wordType}</Tag>
         </Space>
 
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
+        <div className="flashcard-layout">
           {jpBlock}
           {shouldShowMeaning ? meaningBlock : null}
         </div>
 
-        <Space>
+        <Space wrap className="action-row">
           <Button onClick={onSpeak}>Phát âm</Button>
           {showToggleMeaning ? (
             <Button type="primary" onClick={onToggleMeaning}>

@@ -9,9 +9,10 @@ export function WebApp() {
     <App>
       <div className="web-shell">
         <div className="page-wrap">
-          <Typography.Title>Learn Japanese - Web</Typography.Title>
-          <Card>
+          <Typography.Title className="web-title">Learn Japanese - Web</Typography.Title>
+          <Card className="web-card">
             <Tabs
+              className="responsive-tabs"
               items={[
                 { key: "alphabet", label: "Bảng chữ cái", children: <AlphabetScreen /> },
                 { key: "vocabulary", label: "Từ vựng", children: <VocabularyScreen /> },

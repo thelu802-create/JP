@@ -8,11 +8,11 @@ interface Props {
 
 export function AlphabetGrid({ items, onSpeak }: Props) {
   return (
-    <Row gutter={[12, 12]}>
+    <Row gutter={[12, 12]} className="kana-grid">
       {items.map((item) => (
         <Col xs={12} sm={8} md={6} lg={4} key={item.id}>
-          <Card>
-            <Space direction="vertical" size={6}>
+          <Card className="kana-card">
+            <Space direction="vertical" size={6} className="kana-card-content">
               <Typography.Text className="kana">{item.kana}</Typography.Text>
               <Typography.Text type="secondary">{item.romaji}</Typography.Text>
               <Button size="small" onClick={() => onSpeak(item.kana)}>

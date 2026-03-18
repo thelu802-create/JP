@@ -8,9 +8,9 @@ interface Props {
 
 export function GrammarCard({ point, categoryLabel }: Props) {
   return (
-    <Card title={point.title} style={{ marginBottom: 12 }}>
-      <Space direction="vertical" size={6}>
-        <Space>
+    <Card title={point.title} style={{ marginBottom: 12 }} className="grammar-card">
+      <Space direction="vertical" size={6} style={{ width: "100%" }}>
+        <Space wrap>
           <Tag color="blue">{point.level}</Tag>
           <Tag>{categoryLabel}</Tag>
           {point.tags?.map((tag) => (

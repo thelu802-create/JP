@@ -26,7 +26,7 @@ export function ListeningQuizCard({
   onReset
 }: Props) {
   return (
-    <Card title="Luyện nghe co ban">
+    <Card title="Luyện nghe cơ bản" className="quiz-card">
       <Space direction="vertical" size={12} style={{ width: "100%" }}>
         <Typography.Text type="secondary">Gợi ý: {hint}</Typography.Text>
         <Typography.Text className="jp-text">{japanese}</Typography.Text>
@@ -34,11 +34,12 @@ export function ListeningQuizCard({
           Phát âm thanh
         </Button>
         <Radio.Group
+          className="quiz-options"
           value={selected}
           onChange={(event) => onSelect(event.target.value)}
           options={options.map((option) => ({ label: option, value: option }))}
         />
-        <Space>
+        <Space wrap className="action-row">
           <Button onClick={onCheck} disabled={!selected}>
             Kiểm tra
           </Button>
