@@ -18,12 +18,18 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    outputs:
+      artifact_name: ${{ steps.artifact_name.outputs.value }}
     steps:
+      - name: Set artifact name
+        id: artifact_name
+        run: echo "value=github-pages-${{ github.run_id }}-${{ github.run_attempt }}" >> $GITHUB_OUTPUT
+
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: 20
           cache: npm
@@ -35,8 +41,9 @@ jobs:
         run: npm run build -w @learnjp/web
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
+          name: ${{ steps.artifact_name.outputs.value }}
           path: apps/web/dist
 
   deploy:
@@ -49,3 +56,5 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: ${{ needs.build.outputs.artifact_name }}
